@@ -60,7 +60,7 @@ def linkAccount(request):
 
     headers = {
         'Content-Type': 'application/json',
-        'API-Key': 'NRAK-RY2I9OJ4V4OG1PI1PDX54IVCE8R',
+        'API-Key': 'NRAK-',
     }
 
     app_group = {
