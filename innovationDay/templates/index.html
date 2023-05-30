@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Page</title>
+</head>
+<body>
+    <h1>Account ID Query</h1>
+    <form action="queryAccounts" method="">
+        <label for="account-name">Account Name:</label>
+        <input type="text" id="account-name" name="account-name" required>
+        <input type="submit" value="Query Accounts">
+    </form>
+    <hr>
+    <h1>Create Account </h1>
+    <form action="createAccount" method="">
+        <label for="account-name">Account Name:</label>
+        <input type="text" id="account-name" name="account-name" required>
+        <input type="submit" value="Create Account">
+    </form>
+
+    <hr>
+    <h1>Link Account and groups </h1>
+    <form action="linkAccount" method="">
+        <label for="account-id">Account ID:</label>
+        <input type="text" id="account-id" name="account-id" required>
+        <label for="group-id">Group Id:</label>
+        <input type="text" id="group-id" name="group-id" required>
+        <input type="submit" value="Link groups to account">
+    </form>
+</body>
+</html>
