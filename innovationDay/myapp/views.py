@@ -64,19 +64,19 @@ def linkAccount(request):
     }
 
     app_group = {
-        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+app_groupID+'", accountAccessGrants: {accountId: '+accountId+', roleId: "'+app_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
+        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+app_groupID+'", accountAccessGrants: {accountId: '+accountID+', roleId: "'+app_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
         'variables': '',
     }
     engg_group = {
-        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+engg_groupID+'", accountAccessGrants: {accountId: '+accountId+', roleId: "'+engg_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
+        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+engg_groupID+'", accountAccessGrants: {accountId: '+accountID+', roleId: "'+engg_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
         'variables': '',
     }
     l2_group = {
-        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+l2_groupID+'", accountAccessGrants: {accountId: '+accountId+', roleId: "'+l2_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
+        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+l2_groupID+'", accountAccessGrants: {accountId: '+accountID+', roleId: "'+l2_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
         'variables': '',
     }
     sre_group = {
-        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+sre_groupID+'", accountAccessGrants: {accountId: '+accountId+', roleId: "'+sre_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
+        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+sre_groupID+'", accountAccessGrants: {accountId: '+accountID+', roleId: "'+sre_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
         'variables': '',
     }
 
@@ -87,5 +87,5 @@ def linkAccount(request):
 
     accountId = link_app_grp.json()['data']['accountManagementCreateAccount']['managedAccount']['id']
     accountName = link_app_grp.json()['data']['accountManagementCreateAccount']['managedAccount']['name']
-    accountRegion = link_app_grp.json()['data']['accountManagementCreateAccount']['managedAccount']['regionCode']
-    return render(request, 'linkAccount.html', {'accountName':accountName, 'accountId': accountId, 'accountRegion': accountRegion })
+
+    return render(request, 'linkAccount.html', {'accountName':accountName, 'accountId': accountId , 'app_group': app_groupID})
