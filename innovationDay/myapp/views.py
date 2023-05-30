@@ -9,7 +9,7 @@ def queryAccounts(request):
     accountName = request.GET['account-name']
     headers = {
         'Content-Type': 'application/json',
-        'API-Key': 'NRAK-RY2I9OJ4V4OG1PI1PDX54IVCE8R',
+        'API-Key': 'NRAK-',
     }
     available_accounts = {
         'query': '{\n  actor {\n    accounts {\n      id\n      name\n    }\n  }\n}\n',
@@ -29,7 +29,7 @@ def createAccount(request):
     accountName = request.GET['account-name']
     headers = {
         'Content-Type': 'application/json',
-        'API-Key': 'NRAK-RY2I9OJ4V4OG1PI1PDX54IVCE8R',
+        'API-Key': 'NRAK-',
     }
     create_account = {
     'query': 'mutation {\n  accountManagementCreateAccount(managedAccount: {name: "test"}) {\n    managedAccount {\n      id\n      name\n      regionCode\n    }\n  }\n}\n',
