@@ -1,3 +1,11 @@
+<style>
+  h5{
+      color: red
+  }
+</style>
+{% for message in messages %}
+<h5>{{message}}</h5>
+{% endfor %}
 {% if exists == True %}
 <h1>{{accountName}} Account exists!! account id : {{accountId}}</h1>
 {% else %}

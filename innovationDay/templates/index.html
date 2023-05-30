@@ -4,6 +4,14 @@
   <title>Form Page</title>
 </head>
 <body>
+    <style>
+        h5{
+            color: red
+        }
+    </style>
+    {% for message in messages %}
+    <h5>{{message}}</h5>
+    {% endfor %}
     <h1>Account ID Query</h1>
     <form action="queryAccounts" method="">
         <label for="account-name">Account Name:</label>
