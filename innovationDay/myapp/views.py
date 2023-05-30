@@ -41,3 +41,51 @@ def createAccount(request):
     accountName = response.json()['data']['accountManagementCreateAccount']['managedAccount']['name']
     accountRegion = response.json()['data']['accountManagementCreateAccount']['managedAccount']['regionCode']
     return render(request, 'createAccount.html', {'accountName':accountName, 'accountId': accountId, 'accountRegion': accountRegion })
+
+
+def linkAccount(request):
+    accountID = request.GET['account-id']
+    app_groupID = request.GET['group-id']
+
+    #Add group ids for respective groups
+    engg_groupID = '<add engg group id>'
+    l2_groupID = '<add l2 group id>'
+    sre_groupID = '<add sre group id>'
+
+    #Add role id for respective groups
+    app_roleID = '<add engg role id>'
+    engg_roleID = '<add engg role id>'
+    l2_roleID = '<add l2 role id>'
+    sre_roleID = '<add sre role id>'
+
+    headers = {
+        'Content-Type': 'application/json',
+        'API-Key': 'NRAK-RY2I9OJ4V4OG1PI1PDX54IVCE8R',
+    }
+
+    app_group = {
+        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+app_groupID+'", accountAccessGrants: {accountId: '+accountId+', roleId: "'+app_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
+        'variables': '',
+    }
+    engg_group = {
+        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+engg_groupID+'", accountAccessGrants: {accountId: '+accountId+', roleId: "'+engg_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
+        'variables': '',
+    }
+    l2_group = {
+        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+l2_groupID+'", accountAccessGrants: {accountId: '+accountId+', roleId: "'+l2_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
+        'variables': '',
+    }
+    sre_group = {
+        'query': 'mutation {\n  authorizationManagementGrantAccess(grantAccessOptions: {groupId: "'+sre_groupID+'", accountAccessGrants: {accountId: '+accountId+', roleId: "'+sre_roleID+'"}}) {\n    roles {\n      displayName\n      accountId\n    }\n  }\n}\n',
+        'variables': '',
+    }
+
+    link_app_grp = requests.post('https://api.newrelic.com/graphql', headers=headers, json=app_group)
+    link_engg_grp = requests.post('https://api.newrelic.com/graphql', headers=headers, json=engg_group)
+    link_l2_grp = requests.post('https://api.newrelic.com/graphql', headers=headers, json=l2_group)
+    link_sre_grp = requests.post('https://api.newrelic.com/graphql', headers=headers, json=sre_group)
+
+    accountId = link_app_grp.json()['data']['accountManagementCreateAccount']['managedAccount']['id']
+    accountName = link_app_grp.json()['data']['accountManagementCreateAccount']['managedAccount']['name']
+    accountRegion = link_app_grp.json()['data']['accountManagementCreateAccount']['managedAccount']['regionCode']
+    return render(request, 'linkAccount.html', {'accountName':accountName, 'accountId': accountId, 'accountRegion': accountRegion })
